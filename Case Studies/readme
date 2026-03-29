@@ -1,0 +1,61 @@
+# Case Studies
+
+This section highlights selected end-to-end projects that demonstrate applied data science, econometric modeling, and business-focused analysis.
+
+Each case study is structured to reflect a real-world workflow:
+- Problem definition
+- Data preparation and exploration
+- Model development
+- Evaluation and interpretation
+- Business or policy implications
+
+These projects emphasize not only technical execution, but also the ability to translate analytical results into actionable insights.
+
+---
+
+## Featured Case Studies
+
+### Oil Price Shock Analysis (Bayesian SVAR)
+**Focus:** Macroeconomic modeling | Time series | Structural econometrics  
+
+- Modeled the impact of oil supply and demand shocks on U.S. economic indicators  
+- Implemented a Bayesian Structural VAR with sign restrictions  
+- Extended academic research to evaluate changes in economic sensitivity over time  
+
+**Key Skills:** Time-series analysis, Bayesian modeling, macroeconomic interpretation  
+**Tools:** R (bsvarSIGNs), data visualization  
+
+---
+
+### Food Assistance & Food Insecurity (Treatment Effects)
+**Focus:** Causal inference | Policy evaluation  
+
+- Estimated the impact of food assistance programs on food insecurity outcomes  
+- Applied treatment effect models using observational data  
+- Evaluated robustness across model specifications  
+
+**Key Skills:** Causal inference, regression analysis, program evaluation  
+**Tools:** R, econometrics  
+
+---
+
+### Real Estate Price Prediction (Machine Learning)
+**Focus:** Predictive modeling | Feature engineering  
+
+- Built machine learning models to predict housing prices  
+- Performed data cleaning, feature engineering, and model comparison  
+- Evaluated model performance using cross-validation and error metrics  
+
+**Key Skills:** Machine learning, model tuning, feature engineering  
+**Tools:** Python (scikit-learn, XGBoost)  
+
+---
+
+## How to Navigate
+
+Each case study folder contains:
+- A detailed project README with methodology and results
+- Code (R/Python notebooks or scripts)
+- Supporting outputs such as visualizations and model results
+
+For a quick overview, start with the project README in each folder.
