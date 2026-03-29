@@ -1,1 +1,1 @@
-The purpose of this reposoitery is to showcase some of the academic work done in pursuit of my master's degree. 
+This repository contains selected graduate coursework and applied analytics projects completed during my master’s studies in economics with a concentration in business analytics and forecasting. The work includes econometrics, forecasting, statistical modeling, machine learning, and applied business analysis using Python, R, SQL, SAS, and Excel.
