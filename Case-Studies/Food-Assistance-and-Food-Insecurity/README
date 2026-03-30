@@ -1,0 +1,51 @@
+## Food Assistance and Food Insecurity: Treatment Effect Analysis
+
+### Goal
+
+Evaluate the impact of SNAP (Supplemental Nutrition Assistance Program) participation on food insecurity using cross-sectional survey data.
+
+---
+
+### Approach
+
+Used causal inference methods to estimate the relationship between SNAP participation and food insecurity outcomes:
+
+- Estimated baseline relationships using OLS and GLS regression with demographic and economic controls  
+- Applied treatment effect models to evaluate the impact of SNAP participation  
+- Used multinomial logit to capture variation across food insecurity levels  
+- Assessed robustness using bootstrapping, propensity score matching, and alternative model specifications  
+
+---
+
+### Data
+
+Data is sourced from the U.S. Census Bureau’s **Current Population Survey – Food Security Supplement (December 2023)**.
+
+Key variables include:
+
+- **HESP1** – SNAP participation (treatment variable)  
+- **HRFS12M1** – Food insecurity status (binary outcome)  
+- **HEFAMINC** – Household income  
+- **GEDIV** – Geographic region  
+- **PRNMCHLD** – Number of children  
+- **PEMARITL** – Marital status  
+- **PEEDUCA** – Education level  
+- **PTDTRACE** – Race/ethnicity  
+- **PENATVTY** – Country of origin  
+- **PEMLR** – Labor force participation  
+
+---
+
+### Results
+
+Results suggest a modest reduction in food insecurity (approximately 2–5%) associated with SNAP participation in the short term.
+
+These findings are consistent across multiple model specifications, including matching and resampling approaches.
+
+However, due to the cross-sectional nature of the data, the analysis captures short-term associations rather than long-term causal effects. A panel data or time-series framework would be required to evaluate persistence over time.
+
+---
+
+### Relevance
+
+This analysis provides evidence on the effectiveness of SNAP as a policy tool for reducing food insecurity and highlights the importance of accounting for selection bias when evaluating social programs.
