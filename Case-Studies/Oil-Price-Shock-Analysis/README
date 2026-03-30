@@ -1,0 +1,59 @@
+## Oil Price Shock Analysis
+
+### Goal
+
+Evaluate how the price elasticity of oil demand has evolved over time and how oil supply shocks impact U.S. macroeconomic outcomes.
+
+This project replicates and extends the analysis from Baumeister and Peersman (2013) by applying structural VAR methods to more recent data.
+
+---
+
+### Approach
+
+Used time-series econometric methods to model the relationship between oil supply shocks and macroeconomic outcomes:
+
+- Estimated baseline relationships using a Vector Autoregression (VAR) framework  
+- Implemented Bayesian sign-restricted SVAR models to identify structural oil supply and demand shocks  
+- Generated impulse response functions (IRFs) to analyze the dynamic effects of shocks  
+- Compared results across decades to approximate time-varying dynamics observed in the original study  
+
+---
+
+### Data
+
+Data is sourced from the Federal Reserve Economic Data (FRED) and the U.S. Energy Information Administration (EIA):
+
+- **Oil Prices** – Real U.S. refiners’ acquisition cost of imported crude oil (proxy for oil prices)  
+- **Production** – World crude oil production (proxy for oil supply)  
+- **GDP** – U.S. real gross domestic product (proxy for economic activity)  
+
+All series were transformed and aligned for time-series analysis.
+
+---
+
+### Results
+
+The original study identified a decline in the price elasticity of oil demand over time, with prices becoming more sensitive to supply disruptions.
+
+This analysis extends those findings by estimating separate SVAR models across different decades.
+
+![Oil Price Responses to Demand Shocks by Time Period](outputs/Picture2.png)
+
+Key findings:
+
+- Oil prices exhibit **increasing sensitivity to production shocks over time**, consistent with declining price elasticity of demand  
+- More recent periods show **faster decay of price responses**, indicating improved market adjustment mechanisms  
+- Results suggest structural changes in the oil market, including increased global integration and energy diversification  
+
+---
+
+### Relevance
+
+These findings highlight a key shift in modern energy markets:
+
+While oil prices respond more sharply to supply disruptions, markets have become more resilient, with faster stabilization following shocks.
+
+This has important implications for:
+- inflation forecasting  
+- energy market risk assessment  
+- macroeconomic policy analysis  
