@@ -1,1 +1,76 @@
 
+## Real Estate Price Prediction
+
+### Goal
+
+Develop and compare machine learning models to predict housing prices and identify the key features driving property valuation.
+
+This project focuses on:
+
+* Improving predictive accuracy across models
+* Understanding which housing characteristics most influence price
+* Demonstrating a reproducible ML workflow using Python
+
+---
+
+### Approach
+
+Implemented a full modeling pipeline using both linear and tree-based methods:
+
+* Applied log transformation to stabilize variance in sale prices
+* Built scikit-learn pipelines for preprocessing and modeling
+* Used feature scaling and imputation for missing data
+* Estimated and compared multiple models:
+    * Linear Regression
+    * Ridge & Lasso (regularization)
+    * Random Forest
+    * XGBoost
+* Evaluated performance using:
+    * RMSE
+    * MAE
+    * R²
+
+---
+
+### Data
+
+Data sourced from Kaggle’s
+House Prices – Advanced Regression Techniques (Ames, Iowa)
+
+* ~80 explanatory variables describing housing characteristics
+* Includes structural, location, and quality-based features
+
+    The Ames dataset is a modern alternative to the Boston Housing dataset and is widely used for applied machine learning practice.
+
+---
+
+### Results
+
+* Tree-based models (XGBoost / Random Forest) outperformed linear models in predictive accuracy
+* Feature selection (e.g., variance thresholding) improved model stability and generalization
+
+Top Predictive Features:
+
+* Overall quality of the home
+* Above-ground living area (square footage)
+* Garage capacity
+* Basement quality
+* Presence of central air conditioning
+
+![Feature Importance](outputs/Picture3.png)
+
+Key Insights:
+
+* Structural quality and livable space dominate price prediction
+* Some intuitive features (e.g., pool size) had minimal predictive value
+* Model performance is sensitive to feature engineering and preprocessing choices
+
+---
+
+### Relevance
+
+This analysis highlights how machine learning can be used to:
+
+* Identify high-impact property features for valuation
+* Inform real estate investment and renovation decisions
+* Provide a framework for scaling to larger housing markets
