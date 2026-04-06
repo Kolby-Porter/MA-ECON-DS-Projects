@@ -104,25 +104,69 @@ ggplot(factor_data, aes(x = MarketSize, fill = Promotion)) +
 
 # Data Audit #
 
+    # Structure #
+
+head(factor_data)
+
+str(factor_data)
+
+factor_data %>%
+  count(LocationID, week) %>%
+  filter(n > 1)
+dim(factor_data) 
+
+    # Complteness #
+
+colSums(is.na(factor_data))
+
+## No missing values detected across key variables, reducing concern ##
+## for attrition or measurement bias. ##
+
+    # Validity #
+
+neg_sales <- factor_data %>%
+    filter(SalesInThousands < 0)
+head(neg_sales)
+
+sales_data <- factor_data %>%
+    group_by(Promotion, week) %>%
+    summarise(total_sales = sum(SalesInThousands))
+head(sales_data)
+
+
+ggplot(sales_data, aes(x = week, y = total_sales, group = Promotion, color = Promotion)) + 
+    geom_line()
+
+promo_2_sales <- factor_data %>%
+    filter(Promotion == 2)
+
+summary(factor_data$SalesInThousands)
+
+outliers <- promo_2_sales %>%
+    filter(SalesInThousands > 60.48 | SalesInThousands < 42.55)
+
+dim(outliers)
+
+ggplot(outliers, aes(x = week, y = SalesInThousands, group = LocationID, color = LocationID)) +
+    geom_line() +
+    labs(title = "Outliers in Sales for Promotion 2")
+
+## Promotion 2 contains a significant amoutn of low performing stores,
+## 89 stores are abserved with sales below the 25th percentile of the overall sales distribution.
+
+## While differences in outcome levels are observed at the start of the observation
+## period, these cannot be attributed to pre-treatment differences due to the absence
+## of baseline data. Given strong covariate balance, these differences are more
+## plausibly due to random variation or early treatment effects rather than systematic
+## confounding. ##
+
+    # Measurement #
+
 
 
 # Identification #
 
 # Estimation #
-
-anova_model <- aov(SalesInThousands ~ Promotion, data = factor_data)
-
-summary(anova_model)
-plot(anova_model)
-
-## Thers is strong statistical evidence of differences in mean sales across ##
-## the three promotion strategies (p < 0.001). ##
-
-TukeyHSD(anova_model)
-
-## Promotion 2 underperforms significantly relative to both alternatives, ##
-## reducing average weekly sales by approximately 8–11 thousand units relative##
-## to the best-performing strategies (which were 1 and 3) ##
 
 # Validation #
 
