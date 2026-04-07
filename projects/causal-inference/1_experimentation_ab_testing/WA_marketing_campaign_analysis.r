@@ -5,6 +5,8 @@ library(readr)
 library(tidyr)
 library(cobalt)
 library(patchwork)
+library(lmtest)
+library(sandwich)
 
 path <- "C:/Users/Kolby.Porter/MA-ECON-DS-Projects/projects/causal-inference/1_experimentation_ab_testing/WA_Marketing-Campaign.csv" # nolint: line_length_linter.
 
@@ -32,7 +34,8 @@ summary(data)
 
 factor_data <- data %>%
     mutate(MarketSize = as.factor(MarketSize)) %>%
-    mutate(Promotion = as.factor(Promotion))
+    mutate(Promotion = as.factor(Promotion)) %>%
+    mutate(MarketID = as.factor(MarketID))
 
 # In investgating design validity, we will be assessing: #
 
@@ -102,7 +105,7 @@ ggplot(factor_data, aes(x = MarketSize, fill = Promotion)) +
 # independence between treatment and potential outcomes, allowing us to proceed with 
 # estimation while accounting for within-store correlation.
 
-# Data Audit #
+####Data Audit####
 
     # Structure #
 
@@ -180,9 +183,53 @@ ggplot(promo_2_sales, aes(x = SalesInThousands)) +
 ## characteristics and are not influenced by promotional assignment,
 ## supporting their validity for adjustment in estimation. ##
 
-# Identification #
 
-# Estimation #
+
+####Identification####
+
+## Identification Summary:
+##
+## Under the assumptions of SUTVA, ignorability, positivity, and consistency,
+## differences in average sales across promotion groups can be interpreted
+## as causal effects of the promotional strategies.
+##
+## These assumptions are supported by strong covariate balance, lack of
+## allocation bias, and consistent treatment assignment at the store level.
+## However, the absence of pre-treatment outcomes prevents direct verification
+## of baseline equivalence, requiring reliance on the validity of the
+## randomization process. ##
+
+####Estimation####
+
+baseline <- lm(SalesInThousands ~ Promotion, data = factor_data)
+summary(baseline)
+
+coeftest(baseline, vcov = vcovCL(baseline, cluster = ~LocationID))
+
+head(factor_data)
+
+## The baseline OLS model estimates a significant negative effect of Promotion 2 on sales
+##  relative to Promotion 1, while Promotion 3 does not differ significantly from Promotion 1. However, standard errors are likely underestimated due to clustering at the store level. After adjusting for clustering, the negative effect of Promotion 2 remains statistically significant, suggesting that this promotional strategy may be less effective than Promotion 1. ##
+
+ols_covariates <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID + week, data = factor_data)
+summary(ols_covariates)
+
+coeftest(ols_covariates, vcov = vcovCL(ols_covariates, cluster = ~LocationID))
+
+# Adjusting the model by adding covariates does not significantly change the estiamted effect
+# of Promotion 2, which remains negative and statistically significant. This model does however,
+# produce a negative and significant effect for promotion 3 relative to promotion 1. 
+
+ols_interactions <- lm(SalesInThousands ~ Promotion * AgeOfStore + Promotion * MarketSize + MarketID + week, data = factor_data)
+
+coeftest(ols_interactions, vcov = vcovCL(ols_interactions, cluster = ~LocationID))
+
+# The interaction model offers significant insights into the relationship between promotions
+# and age of store / market size. Significant findings are listed below. 
+#
+# Promotion 1 is still the best-performing strategy overall
+# Promotion 3 performs relatively better for older stores
+# Promotion 2 performs less-poorly in smaller markets
 
 # Validation #
 
