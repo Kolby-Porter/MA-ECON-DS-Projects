@@ -177,10 +177,16 @@ ggplot(promo_2_sales, aes(x = SalesInThousands)) +
 # consistently defined across stores and weeks. As outcomes are measured
 # after treatment assignment, there is no evidence of post-treatment bias
 # in covariates or outcome construction.
-#
+
 # Covariates (AgeOfStore, MarketSize, MarketID, week) are pre-treatment
 # characteristics and are not influenced by promotional assignment,
 # supporting their validity for adjustment in estimation.
+
+## Data Audit Summary ##
+## The data is well-structured and consistent with the expections of the design. 
+## We do not encounter missingness or erroneous values that would raise concerns. 
+## The distribution of variables is consistent with expectations, with some 
+## variation in sales outcomes across promotion groups.
 
 
 #### 3. Identification####
