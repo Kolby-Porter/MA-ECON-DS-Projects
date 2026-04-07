@@ -233,5 +233,74 @@ coeftest(ols_interactions, vcov = vcovCL(ols_interactions, cluster = ~LocationID
 
 # Validation #
 
+    # Sensitivity to Model Specification #
+
+q1 <- quantile(factor_data$SalesInThousands, 0.25)
+q3 <- quantile(factor_data$SalesInThousands, 0.75)
+iqr <- q3 - q1
+
+trimmed <- factor_data %>%
+  filter(SalesInThousands >= (q1 - 1.5*iqr),
+         SalesInThousands <= (q3 + 1.5*iqr))
+
+trimmed_ols <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID + week, data = trimmed)
+
+coeftest(trimmed_ols, vcov = vcovCL(trimmed_ols, cluster = ~LocationID))
+
+## The estimated effects are robust to outlier removal, with Promotion 2 
+## still showing a significant negative effect relative to Promotion 1, and 
+## Promotion 3 showing a significant negative effect relative to Promotion 1. 
+## This suggests that the results are not driven by extreme values in the sales data. ##
+
+
+trimmed_interactions <- lm(SalesInThousands ~ Promotion * AgeOfStore + Promotion * MarketSize + MarketID + week, data = trimmed)
+
+coeftest(trimmed_interactions, vcov = vcovCL(trimmed_interactions, cluster = ~LocationID))
+
+## The estiamted effect of Promotion 3 for older stores remains positive and significant,
+## while the estimated effect of Promotion 2 in smaller markets remains neagative,
+## but is no longer statistically significant at the 5% level. 
+
+## However, the overall pattern of results is consistent with the main specification, 
+## suggesting that the key findings are not highly sensitive to outliers or model 
+## specification. ##
+
+week_1_ols <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID, data = filter(factor_data, week == 1))
+summary(week_1_ols)
+
+week_2_ols <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID, data = filter(factor_data, week == 2))
+summary(week_2_ols)
+
+week_3_ols <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID, data = filter(factor_data, week == 3))
+summary(week_3_ols)
+
+week_4_ols <- lm(SalesInThousands ~ Promotion + AgeOfStore + MarketSize + MarketID, data = filter(factor_data, week == 4))
+summary(week_4_ols)
+
+## The OLS estimation by week reveals that the negative effect of Promotion 2 relative 
+## to Promotion 1 is consistent across all four weeks, as is the effect of Promotion 3 
+## relative to Promotion 1. This consistency across time periods strengthens the evidence 
+## that the observed effects are not driven by temporal factors or specific weeks, 
+## but rather reflect underlying differences in the effectiveness of the promotional 
+## strategies. ##
+
+plot(ols_covariates)
+
+## Residual diagnostics indicate no major violations of linear model assumptions.
+## While a small number of observations exhibit moderate leverage and residual
+## values, none appear to exert undue influence on the model estimates.
+## The relationship between residuals and leverage appears broadly stable,
+## supporting the validity of the OLS specification. ##
+
+## Estimated effects of promotion strategies remain consistent across
+## alternative model specifications, suggesting results are not driven
+## by model choice. ##
+
 # Decision #
 
+## Based on the design audit, data audit and estimation results, we have evidence to 
+## recommend against the use of Promotion 2, which performs significantly worse in 
+## most aspects of the analysis. Promotion 3 may be a viable alternative to Promotion 1,
+## particularly for older stores, but further investigation is warranted to confirm this 
+## finding and explore potential mechanisms. Overall, Promotion 1 appears to be the most 
+## effective strategy across the board.
