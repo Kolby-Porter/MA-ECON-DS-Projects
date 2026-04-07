@@ -152,7 +152,7 @@ ggplot(outliers, aes(x = week, y = SalesInThousands, group = LocationID, color =
     labs(title = "Outliers in Sales for Promotion 2")
 
 ## Promotion 2 contains a significant amoutn of low performing stores,
-## 89 stores are abserved with sales below the 25th percentile of the overall sales distribution.
+## 89 stores are observed with sales below the 25th percentile of the overall sales distribution.
 
 ## While differences in outcome levels are observed at the start of the observation
 ## period, these cannot be attributed to pre-treatment differences due to the absence
@@ -161,6 +161,8 @@ ggplot(outliers, aes(x = week, y = SalesInThousands, group = LocationID, color =
 ## confounding. ##
 
     # Measurement #
+
+
 
 
 
