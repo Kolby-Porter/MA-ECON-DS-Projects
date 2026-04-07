@@ -115,6 +115,9 @@ factor_data %>%
   filter(n > 1)
 dim(factor_data) 
 
+## No duplicate store-week observations detected. Data structure is consistent
+## with the intended unit of analysis. ##
+
     # Complteness #
 
 colSums(is.na(factor_data))
@@ -137,34 +140,45 @@ head(sales_data)
 ggplot(sales_data, aes(x = week, y = total_sales, group = Promotion, color = Promotion)) + 
     geom_line()
 
+ggplot(factor_data, aes(x = SalesInThousands, group = Promotion, fill = Promotion)) +
+    geom_density(alpha = 0.5)
+
 promo_2_sales <- factor_data %>%
     filter(Promotion == 2)
 
 summary(factor_data$SalesInThousands)
 
+q1 <- quantile(factor_data$SalesInThousands, 0.25)
+q3 <- quantile(factor_data$SalesInThousands, 0.75)
+iqr <- q3 - q1
+
 outliers <- promo_2_sales %>%
-    filter(SalesInThousands > 60.48 | SalesInThousands < 42.55)
+  filter(SalesInThousands < (q1 - 1.5*iqr) |
+         SalesInThousands > (q3 + 1.5*iqr))
 
 dim(outliers)
 
-ggplot(outliers, aes(x = week, y = SalesInThousands, group = LocationID, color = LocationID)) +
-    geom_line() +
-    labs(title = "Outliers in Sales for Promotion 2")
+outliers
 
-## Promotion 2 contains a significant amoutn of low performing stores,
-## 89 stores are observed with sales below the 25th percentile of the overall sales distribution.
+ggplot(promo_2_sales, aes(x = SalesInThousands)) +
+    geom_histogram(binwidth = 5, fill = "blue", color = "black") +
+    labs(title = "Distribution of SalesInThousands for Promotion 2")
 
-## While differences in outcome levels are observed at the start of the observation
-## period, these cannot be attributed to pre-treatment differences due to the absence
-## of baseline data. Given strong covariate balance, these differences are more
-## plausibly due to random variation or early treatment effects rather than systematic
-## confounding. ##
+## Promotion 2 exhibits a larger share of low sales observations relative to
+## other groups. Given randomized assignment and strong covariate balance,
+## this pattern likely reflects realized outcome variation rather than
+## systematic differences in store quality. ##
 
     # Measurement #
 
-
-
-
+## SalesInThousands is a continuous measure of store performance and is
+## consistently defined across stores and weeks. As outcomes are measured
+## after treatment assignment, there is no evidence of post-treatment bias
+## in covariates or outcome construction.
+##
+## Covariates (AgeOfStore, MarketSize, MarketID, week) are pre-treatment
+## characteristics and are not influenced by promotional assignment,
+## supporting their validity for adjustment in estimation. ##
 
 # Identification #
 
