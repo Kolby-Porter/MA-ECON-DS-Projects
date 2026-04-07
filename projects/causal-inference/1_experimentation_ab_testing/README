@@ -1,1 +1,52 @@
-AB Testing project write up
+## Fast Food Marketing Promotion: Causal Effect Analysis
+
+### Goal
+
+Evaluate the effectiveness of different promotional strategies used by a fast food chain to drive sales of a newly released menu item.
+
+---
+
+### Approach
+
+Used causal inference methods to estimate the relative impact of promotional campaigns on sales:
+
+- Conducted design and data audits to assess whether the data-generating process supports causal interpretation
+- Estimated treatment effects using OLS regression with covariates and interaction terms
+- Applied clustered standard errors at the store level to account for repeated observations
+
+---
+
+### Data
+
+Data is sourced from the IBM Watson Analytics Marketing Campaign dataset.
+
+Key variables include:
+
+- **MarketID**: Unique identifier for market
+- **MarketSize**: Size of market area by sales
+- **LocationID**: Unique identifier for store location
+- **AgeOfStore**: Age of store in years
+- **Promotion**: One of three promotional strategies tested
+- **week**: One of four weeks during which promotions were run
+- **SalesInThousands**: Sales for a given store, promotion, and week
+
+---
+
+### Results
+
+Promotion 1 is the most effective strategy, consistently outperforming the other campaigns in average sales.
+
+Promotion 3 performs moderately well and shows evidence of improved performance in older stores, suggesting it may be better suited for locations with more established customer bases.
+
+Promotion 2 is the weakest-performing strategy overall, though results suggest it may perform less poorly in smaller markets. 
+
+---
+
+### Relevance
+
+This project demonstrates how causal inference can be applied to real-world business problems, moving beyond prediction to identify what actually drives outcomes.
+
+The analysis highlights how experimental design, proper validation, and robust estimation techniques can be used to inform marketing strategy decisions. It also illustrates how treatment effects can vary across different business contexts, providing actionable insights for targeted decision-making.
+
+
+
