@@ -48,5 +48,10 @@ This project demonstrates how causal inference can be applied to real-world busi
 
 The analysis highlights how experimental design, proper validation, and robust estimation techniques can be used to inform marketing strategy decisions. It also illustrates how treatment effects can vary across different business contexts, providing actionable insights for targeted decision-making.
 
+### Key Takeaways
+
+- Promotion 1 should be the default strategy across most locations
+- Promotion 3 is a viable alternative for older stores
+- Promotion 2 should generally be avoided, with limited exceptions in smaller markets
 
 
