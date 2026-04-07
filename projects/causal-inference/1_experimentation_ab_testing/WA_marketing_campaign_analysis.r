@@ -11,7 +11,6 @@ library(styler)
 
 path <- "C:/Users/Kolby.Porter/MA-ECON-DS-Projects/projects/causal-inference/1_experimentation_ab_testing/WA_Marketing-Campaign.csv" # nolint: line_length_linter.
 
-style_file("projects/causal-inference/1_experimentation_ab_testing/WA_marketing_campaign_analysis.r")
 data <- read_csv(path)
 
 summary(data)
