@@ -1,0 +1,172 @@
+Topics:
+
+## Portfolio Returns
+Definition:
+The percentage gain or loss of a portfolio over a specified period.
+
+Formula:
+Total Return = (End Value - Beginning Value + Income) / Beginning Value
+
+Why it matters:
+Portfolio return is the primary measure of investment performance and serves as the foundation for evaluating risk-adjusted returns.
+    
+## volatility:
+Definition:
+Volatility measures the dispersion of returns over time and is commonly used as a proxy for investment risk.    
+    
+Why it Matters:   
+Volatility is typically measured by standard deviation and variance. 
+Volatility lends itself to price swings and risk. 
+
+## Covariance
+Definition:
+Covariance measures how two assets move relative to each other.
+
+Formula:
+Cov(R₁, R₂) = E[(R₁ - E[R₁])(R₂ - E[R₂])]
+
+Interpretation:
+Positive covariance → assets tend to move together  
+Negative covariance → assets tend to move inversely  
+Near zero covariance → little linear relationship 
+
+## Sharpe Ratio
+Definition:
+Measures excess return earned per unit of risk.
+
+Formula:
+Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Portfolio Standard Deviation
+
+## Capital Asset Pricing Model (CAPM)
+A financial framework used to determine the theoretical rate of return for an asset. This framework estimates the expected return required for an asset based on its systematic market risk. 
+CAPM is measured by:
+    E(R_i) = R_f + β_i × [E(R_m) − R_f]
+
+Where:
+- **E(R_i)** = Expected return of investment i  
+- **R_f** = Risk-free rate  
+- **β_i (Beta)** = Systematic risk relative to market  
+- **E(R_m)** = Expected market return  
+- **E(R_m) − R_f** = Market risk premium  
+
+## Factor Models
+Definition:
+A framework that explains asset returns using exposure to multiple systematic risk factors and idiosyncratic risk.
+
+A factor model is a financial framework that breaks down asset returns into systematic risk factors and idiosyncratic risk. Portfolio managers use these models to identify the primary drivers of investment performance, assess risk exposures, and construct diversified portfolios designed to target specific market characteristics
+
+An example of a factor model:
+    Ri = ai + β_i(m) * Rm + β_i(1) * F1 + β_i(2) * F2 +...+β_i(N) * FN + ei
+
+Where:
+
+- **Ri** = return of security
+- **Rm** = market return
+- **F(1, 2, 3 ... N)** = each of the factors used
+- **β_i** = beta with respect to each factor including the market (m)
+- **e** = Residual Risk
+- **a** = idiosyncratic return
+
+## Rebalancing 
+Definition:
+The process of realigning a portfolio by selling and buying different assets to ensure a portfolio stays aligned with a predefined risk tolerance or other metric.
+
+Some popular rebalancing strategies:
+    Time-Based: Selling and buying on a set interval
+    Band-Based: Rebalancing when an asset deviates from it's target weight by a certain amount. 
+    Constant-Mix: Maintains fixed target allocations by systematically selling outperforming assets and buying underperforming assets.
+
+## Transaction Costs
+    Expenses incurred when buying or selling financial assets. These fees and charges directly erode net investment returns and are broadly divided into explicit costs (like broker commissions and taxes) and implicit costs (like bid-ask spreads and market impact).
+    Explicit Costs: Commissions, Taxes/Levies, Sales Loads
+    Implicit Costs: Bid-ask spread, Slippage, Opportunity costs, market impact
+
+## Tracking Error
+Definition:
+Tracking error measures the volatility of active returns relative to a benchmark.
+
+Formula:
+σ = √[ Σ(Rₚ − Rᵦ)² / (N − 1) ]
+
+Why it matters:
+Low tracking error indicates close benchmark replication.
+High tracking error indicates larger deviations from benchmark performance.
+
+## Correlation
+Definition:
+Correlation measures how two diffrent assets or investments move in relation to one another. 
+
+Formula:
+r = (n·∑xy − (∑x)(∑y)) / √((n·∑x² − (∑x)²)(n·∑y² − (∑y)²))
+
+Why it Matters:
+Correlation is a foundation of diversification. Combining assets with low or negative correlation significatly reducers volatility and limits drawdowns. 
+
+## Beta
+Definition:
+Beta in portfolio management is a statistical measure that represents an assets volatility and risk in relation to the broader market. 
+
+Formula:
+β = Cov(Rₛ, Rₘ) / Var(Rₘ)
+
+Why it Matters:
+Beta is used for gauging the relative risk of an asset for portfolio planning. Risk matching involves picking an asset with a beta profile that meets a predetermined standard. 
+
+## Alpha
+Definition:
+Alpha is the excess return of a portfolio relative to its expected return after adjusting for market or factor risk. Positive alpha is often interpreted as value added through manager skill or strategy.
+
+Formula:
+α = Rₚ − Rf - β(Rₘ − Rf) + ε  
+
+Where: 
+- **Rₚ** = Portfolio Return
+- **Rf** = Risk Free Return 
+- **β(Rₘ − Rf)** = Portfolio’s risk-adjusted expected excess return from market exposure
+- **ε** = Residual, the difference betwwen actual return and the predicted return. 
+
+Why it matters:
+Alpha is often used to evaluate portfolio manager skill and active investment performance.
+
+## Efficient Frontier
+Definition:
+A set of optimal portfolios offering the highest possible expected return for a given level of risk. 
+
+Formula:
+
+Why it Matters:
+
+## Portfolio Optimization
+Definition:
+
+Formula:
+
+Why it Matters:
+
+## Drawdown
+Definition:
+
+Formula:
+
+Why it Matters:
+
+## Value at Risk (VaR)
+Definition:
+
+Formula:
+
+Why it Matters:
+
+## Factor Exposure
+Definition:
+
+Formula:
+
+Why it Matters:
+
+## Turnover
+Definition:
+
+Formula:
+
+Why it Matters:
