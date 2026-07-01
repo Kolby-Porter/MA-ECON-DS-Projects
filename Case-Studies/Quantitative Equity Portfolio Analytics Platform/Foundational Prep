@@ -10,7 +10,7 @@ Total Return = (End Value - Beginning Value + Income) / Beginning Value
 Why it matters:
 Portfolio return is the primary measure of investment performance and serves as the foundation for evaluating risk-adjusted returns.
     
-## volatility:
+## Volatility:
 Definition:
 Volatility measures the dispersion of returns over time and is commonly used as a proxy for investment risk.    
     
@@ -94,7 +94,7 @@ High tracking error indicates larger deviations from benchmark performance.
 
 ## Correlation
 Definition:
-Correlation measures how two diffrent assets or investments move in relation to one another. 
+Correlation measures the strength and direction of the linear relationship between two asset returns.
 
 Formula:
 r = (n·∑xy − (∑x)(∑y)) / √((n·∑x² − (∑x)²)(n·∑y² − (∑y)²))
@@ -104,7 +104,7 @@ Correlation is a foundation of diversification. Combining assets with low or neg
 
 ## Beta
 Definition:
-Beta in portfolio management is a statistical measure that represents an assets volatility and risk in relation to the broader market. 
+Beta measures an asset’s sensitivity to market movements and represents systematic risk relative to the broader market.
 
 Formula:
 β = Cov(Rₛ, Rₘ) / Var(Rₘ)
@@ -117,7 +117,7 @@ Definition:
 Alpha is the excess return of a portfolio relative to its expected return after adjusting for market or factor risk. Positive alpha is often interpreted as value added through manager skill or strategy.
 
 Formula:
-α = Rₚ − Rf - β(Rₘ − Rf) + ε  
+α = (Rₚ − Rf) − β(Rₘ − Rf) 
 
 Where: 
 - **Rₚ** = Portfolio Return
@@ -136,38 +136,66 @@ A set of optimal portfolios offering the highest possible expected return for a 
 ![Efficient Frontier](Efficient-Frontier-Graph-1.png)
 
 Why it Matters:
+The Efficient Frontier is a concept that represents economic efficiency. No portfolio outside of the curve is considered to be as efficient for the given risk level.
+Portfolios along the efficient frontier maximize expected return for a given level of risk.
+The tangency portfolio is the portfolio on the frontier with the highest Sharpe ratio. 
 
 ## Portfolio Optimization
 Definition:
+The quantitative process of selecting the ideal mix of assets to maximize returns for a given risk threshold. 
 
-Formula:
+Popular Methods:
+**Mean-Variance Optimization:** The foundational approach; MVO uses the mathematical mean (Expected Return) and variance (Risk/Volatility) of assets to optimize allocation. 
+**Conditional Value at Risk:** Measures expected losses beyond the VaR threshold and is useful for protecting against tail risk. 
+**Risk Parity:** This strategy focuses on allocating investments so that each asset class contributes and equal amount to the total risk of the portfolio. 
 
 Why it Matters:
+Portfolio Optimization prevents over-concentration in a single asset and ensures your money is mathematically positioned to survive different market environments.
 
 ## Drawdown
 Definition:
+A measure of peak-to-trough decline in a portfolio's value, indicating the maximum historical capital loss.
 
-Formula:
+Forumla:
+    Drawdown = (Current Value − Peak Value) / Peak Value
 
 Why it Matters:
+Constraints are often constructed around drawdown to protect against severe tail risk ensuring sustained capital preservation during market shocks. 
 
 ## Value at Risk (VaR)
 Definition:
+Value at Risk estimates the minimum loss expected at a given confidence level over a specified time horizon.
 
-Formula:
+Popular Methods:
+**Historic Simulation:** This methods ranks past returns to estimate possible future losses.
+It relies heavily on historical data without making assumptions about the underlying distribution. 
+**Parametric:** Using the expected return, standard deviation and normal distribution to estimate risk. 
+This methods risks underestimating the likelihood extreme downturns. 
+**Monte Carlo:** Using computed simulations to generate a series of random possible future market outcomes to map out risk.
 
 Why it Matters:
+Portfolio optimization using VaR adjusts asset weights to minimize extreme downsides while aiming for target returns. 
+
 
 ## Factor Exposure
 Definition:
-
-Formula:
+A portfolios sensitivity to specific drivers of risk and return such as:
+ - Market
+ - Size
+ - Value
+ - Momentum
+ - Quality
+ - Low Volatility
 
 Why it Matters:
+Controlling these exposures ensures your portfolio aligns with your desired investment strategy and prevents unintended, concentrated risks.
 
 ## Turnover
 Definition:
+The rate at which assets are bought and sold over a particular time period. 
 
 Formula:
+Turnover = Min(Total Purchases, Total Sales) / Average Net Assets
 
 Why it Matters:
+Turnover is used as a constraint limiting transacation costs. 
