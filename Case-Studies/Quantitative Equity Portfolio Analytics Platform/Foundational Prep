@@ -199,3 +199,149 @@ Turnover = Min(Total Purchases, Total Sales) / Average Net Assets
 
 Why it Matters:
 Turnover is used as a constraint limiting transacation costs. 
+
+## Covariance Matrix
+Definition:
+A covariance matrix is an N × N matrix containing the variances and covariances of asset returns.
+
+
+Formula:
+σₚ² = wᵀΣw
+
+Where:
+-**w** = vector of portfolio weights
+-**wᵀ** = vector of portfolio weights transposed
+-**Σ** = Covariance matrix of asset returns
+
+Why it matters:
+A cornerstone of optimization, the covriance matrix allows investotrs to maximize returns for a given level of risk. In a portfolio, risk is no longer just the average risk of its parts, but the combined variance of all assets and their interactions.
+
+## Tracking Error Decomposition
+
+Tracking error measures the volatility of active returns relative to a benchmark. It shows an investment's consistency versus a benchmark over a given period of time. Several factors, including fund fees, portfolio composition, rebalancing strategies, and market volatility, can influence tracking error
+
+Tracking Error = √[(1/(N−1)) × ∑ᵢ₌₁ᴺ (Rₚ,ᵢ − Rᵦ,ᵢ)²]
+
+Where:
+-**N** = number of observations
+-**Rₚ,ᵢ** = portfolio return at time i
+-**Rᵦ,ᵢ** = benchmark return at time i
+
+### factor tracking error
+Definition:
+The divergence casued by the pofrtfolio's exposure to common market risk factors relative to the benchmark.
+
+Formula: 
+Total Tracking Error² = Factor TE² + Idiosyncratic TE²
+
+Why it matters:
+Factor tracking error measures benchmark deviation caused by systematic factor exposure differences.
+
+### idiosyncratic tracking error
+Definition:
+The portion of tracking error that is driven by stock-specific risks rather than broad maket or sector factors. 
+
+Formula:
+Total Tracking Error² = Factor TE² + Idiosyncratic TE²
+
+Why it matters:
+Idiosyncratic error is tracked to measure concentration risk. It ensures that a single company’s bankruptcy, fraud, or poor earnings report cannot single-handedly ruin the portfolio's entire relative performance.
+
+## Transaction Cost Analysis (TCA)
+Definition:
+The quantification of both explicit and implicit trading costs. 
+
+TCA is typically broken out into two measures. 
+Pre-Trade TCA: Estimating TC of rebalancing based on historical orders and market models - estimated before trading. 
+Post-Trade TCA: Evaluating the outcome of completed trades versus a benchmark. Used to refine future optimization efforts. 
+
+Key Components:
+- Bid-Ask Spread
+- Slippage
+- Market Impact
+- Opportunity Cost
+
+Why it matters:
+By integrating these costs into optimization models, managers prevent alpha erosion and avoid constructing overly aggressive, non-implementable efficient frontiers.
+
+## Factor Covariance Model
+Definition:
+A factor model that breaks down asset risk into systematic and idiosyncratic components. 
+
+Formula:
+Σ = FΣfFᵀ + D
+
+Where:
+-**Σ**= Total covariance matrix of returns
+-**F**= Factor loading matrix
+-**Σf**= Covariance of factor returns
+-**Fᵀ**= Transpose of factor loading matrix
+-**D**= Diagonal matrix of idiosyncratic risk
+
+Why it matters:
+Factor covariance models reduce dimensionality and improve covariance estimation by modeling common factor risk separately from asset-specific risk.
+
+## Market Microstructure
+Definition:
+Market microstructure studies how financial markets operate at the trading level, including how orders are submitted, matched, and executed, and how these processes affect price formation, liquidity, and transaction costs.
+
+### liquidity
+Liquidity is the ease with which an asset can be bought or sold without materially affecting its price.
+
+Liquidity has an intertwined level of risk. Easier moving assets have little risk, as they can offloaded with ease. Assets that are more difficult to transfer can incur costs that supplement errode their value. 
+
+### bid-ask spread
+The difference between the highest bid price and the lowest ask price. It acts as a direct measure of market liquidity and represents the invisible transaction cost of executing a trade immediately
+
+### order book
+A dynamic catalog of buy and sell limit orders for a specific asset, often organized by price level. It is a foundational tool for price discovery and liquidity in modern financial markets. Traders can use order books to evaluate market sentiment.
+
+### market impact
+Market impact refers to the price movement caused directly by executing a trade, particularly large orders.
+
+## Portfolio Constraints
+Portfolio constraints are rules that restrict how capital may be allocated across assets. The goal is maintain some predetermined level of diversification, liquidity or risk aligned with investor's preference, risk tolerance and regulations. Common types of contraints are: 
+    - Budgetary: The actual investment to acquire assets is limited financially.
+    - Holding Limits: Allocation thresholds that exist to prevent overexposure to a particular arena of investment. 
+    - Liquidity: A certain percentage of funds must be allocated to easily cashable assets/securities so that potential redemption of funds does not create a situation where other assets must be sold at a loss to satisfy withdrawls.   
+    - Turnover: A limit on how many times a portfolio can be rebalanced or traded to minimize transaction costs. 
+    - Long-Only: A position that prohibits short selling.
+
+### long-only
+A long-only portfolio is an investment strategy that only purchases assets—such as stocks, bonds, or mutual funds—with the expectation that their value will appreciate over time. It is the most traditional form of investing, used extensively by retail investors, retirement accounts, and mutual funds, as it does not involve short-selling.
+
+### max position size
+Maximum position size sets an upper limit on the allocation to a single asset to prevent concentration risk.
+
+### sector neutrality
+An investment approach designed to mitigate unnecessary risk born from over concentration in a particular industry. This protects investment from wholesale market sentiment shifts and sudden volatility.
+
+## Optimization Methods
+Techniques used to maximize returns, minimize risks and allocate assets efficiently.
+
+### quadratic programming
+A mathematical optimization technique that minimizes a quadratic objective function subject to linear contraints. This method is a fundamental engine behind portfolio optimization and algorithmic risk management. 
+
+Per Nasdaq:
+[QP] is famously used to solve the mean-variance optimization problem. It finds the exact asset weights that minimize portfolio variance (risk) for a targeted expected return. The objective function calculates risk using the asset covariance matrix, which scales quadratically with the number of assets, while constraints ensure weights sum to 1.
+
+### constrained optimization
+The mathematical process of maximizing or minimizing an objective function like the return on a portfolio while adhering to strict limits like budget, risk tolerance, or short-selling rules.
+
+### convex optimization
+Convex optimization is a class of optimization problems where the objective function is convex and constraints form a convex set, ensuring globally optimal solutions.
+
+Why it matters:
+Many portfolio optimization problems can be formulated as convex optimization problems, allowing efficient and reliable solutions.
+
+## Risk Attribution
+The analytical process of decomposing a portfolio's total risk into specific components. It isolates how individual securities, assets, or underlying market factors (like interest rates or beta) contribute to the overall risk profile, ensuring accountability for active management decisions
+
+### factor contribution
+Factor contribution measures how much systematic risk factors contribute to total portfolio risk or return.
+
+### asset contribution
+Asset contribution measures how much each security contributes to total portfolio risk or return.
+
+### active risk contribution
+A metric that measures how much individual assets or strategic bets drive the total volatility of an actively managed portfolio relative to its benchmark
