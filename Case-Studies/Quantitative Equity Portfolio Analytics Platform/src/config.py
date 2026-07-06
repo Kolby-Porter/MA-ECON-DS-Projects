@@ -10,10 +10,10 @@ portfolio_groups = {
 
 asset_class_caps = {
     "Alt": 0.15,
-    "Fixed_Inc": 0.25,
-    "Dom_Eq": 0.25,
+    "Fixed_Inc": 0.30,
+    "Dom_Eq": 0.20,
     "Intl_Eq": 0.15,
-    "Factor": 0.15
+    "Factor": 0.20
 }
 
 asset_bounds = (0, 0.15)
