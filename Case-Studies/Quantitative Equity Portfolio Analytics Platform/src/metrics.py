@@ -13,3 +13,7 @@ def sharpe_ratio(weights, returns, cov_matrix, rf_annual_rate):
 def negative_sharpe(weights, returns, cov_matrix, rf):
     return -sharpe_ratio(weights, returns, cov_matrix, rf)
 
+def portfolio_beta(portfolio_return, benchmark_return):
+    #beta = cov / benchmark_var
+    beta = benchmark_return.cov(portfolio_return) / benchmark_return.var()
+    return beta
